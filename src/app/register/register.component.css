@@ -1,0 +1,15 @@
+body {
+    content: "";
+    background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.5)), url('https://stimg.cardekho.com/images/carexteriorimages/930x620/Bentley/Flying-Spur/7776/1645012163948/front-left-side-47.jpg?tr=h-48');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    color: white;
+  }
+  .form-control{
+    width:45%
+  }
