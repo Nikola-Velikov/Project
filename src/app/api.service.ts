@@ -25,4 +25,12 @@ email,password
     
 
 }
+login(email:string,password:string) {
+     
+  return  this.httpClient.post('http://localhost:3000/auth/login',
+  {
+email,password
+  })
+}
+
 }

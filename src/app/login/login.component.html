@@ -54,7 +54,7 @@
         <div class="container login-page">
           <h1>Login</h1>
           <div class="login">
-            <form #form="ngForm">
+            <form #form="ngForm" (ngSubmit)="loginHendler(form)">
               <div class="form-group">
                 <label for="email">Email address</label>
                 <input ngModel #emailInput="ngModel"
@@ -75,6 +75,9 @@
                 </div>
                 <div class="error" *ngIf="emailInput.errors?.['minlength']" >
                     <p> Email has to be at least 10 characters long!</p>
+                   </div>
+                   <div class="error" *ngIf="error" >
+                    <p> {{error}}</p>
                    </div>
               </ng-container>
               <div class="form-group">
