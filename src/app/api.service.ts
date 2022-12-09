@@ -15,15 +15,14 @@ export class ApiService {
      
     })
   }
-    postPosts(profile:any) {
-      profile = JSON.stringify(profile)
-    return  this.httpClient.post('http://localhost:3000/create',
-     profile
-    ,{
-      headers:{
-        'Content-type':'application/json'
-      }
+    register(email:string,password:string) {
+     
+    return  this.httpClient.post('http://localhost:3000/auth/register',
+    {
+email,password
     })
-  }
+    
+    
 
+}
 }

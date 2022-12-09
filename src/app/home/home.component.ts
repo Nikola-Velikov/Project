@@ -14,19 +14,12 @@ constructor(private api:ApiService){
 
 }
   ngOnInit(): void {
-  this.api.postPosts({'username':'Nikola'}).subscribe({
-    next:(value)=>{this.hotels = value;
-      console.log(this.hotels);
-      
-    },
-    error:(err)=>{
-      console.log(err);
+ 
       
     }
 
     
-  })
-  }
+  
 
   
 
