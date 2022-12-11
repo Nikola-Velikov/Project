@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DetailsComponent } from './details/details.component';
     CreateComponent,
     CatalogComponent,
     DetailsComponent,
+    EditComponent,
    
   ],
   imports: [

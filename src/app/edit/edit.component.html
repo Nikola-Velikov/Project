@@ -46,34 +46,38 @@
         </ul>
       </div>
     </nav>
+<ng-container *ngIf="car!=null">
+
 
     <main>
       <section class="py-5" id="offer-trip-page">
         <div class="container offer-trip">
-          <h1>Create Offer</h1>
+          <h1>Edit Offer</h1>
           <div>
-            <form #form="ngForm" (ngSubmit)="create(form)">
+            <form #form="ngForm">
               <div class="offer-label">
                 <label for="town">
-                  <i class="fas fa-map-marker-alt"></i> Town</label
+                  <i class="fas fa-map-marker-alt"></i> Town: {{car.city}}</label
                 >
                 <label for="year"
-                  ><i class="far fa-calendar-alt"></i> Year</label
+                  ><i class="far fa-calendar-alt"></i> Year: {{car.year}}</label
                 >
               </div>
               <div class="form-group offer-input">
                 <input
+                value={{city}}
                 ngModel
                 #townInput="ngModel"
                   type="text"
                   class="form-control-2"
                   id="town"
-                  placeholder="Sofia"
+                  placeholder="Plovdiv"
                   name="town"
-                  value=""
                   required=""
                   minlength="2"
+                  
                 />
+        
                 <ng-container *ngIf="townInput.touched">
                     <div class="error" *ngIf="townInput.errors?.['required']">
                         <p>
@@ -95,7 +99,7 @@
                   id="year"
                   placeholder="2002"
                   name="year"
-                  value=""
+                  value='11222'
                   required=""
                 />
               </div>
@@ -110,8 +114,8 @@
                
               </ng-container>
               <div class="offer-label">
-                <label for="time">Made In</label>
-                <label for="color">Color</label>
+                <label for="time">Made In: {{car.madeIn}}</label>
+                <label for="color">Color: {{car.color}}</label>
               </div>
               <div class="form-group offer-input">
                 <input
@@ -122,7 +126,7 @@
                   id="made"
                   placeholder="China"
                   name="madeIn"
-                  value=""
+                  value="{{car.madeIn}}"
                   required=""
                 
                   />
@@ -135,7 +139,7 @@
                   id="time"
                   placeholder="Color"
                   name="color"
-                  value=""
+                  value={{car.color}}
                   required=""
                   />
                 </div>
@@ -162,8 +166,8 @@
                     
                 </ng-container>
                   <div class="offer-label">
-                      <label for="carImage">Car Image</label>
-                <label for="carBrand">Car Brand</label>
+                      <label for="carImage">Car Image: {{car.imageUrl}}</label>
+                <label for="carBrand">Car Brand: {{car.model}}</label>
               </div>
               <div class="form-group offer-input">
                 <input
@@ -174,7 +178,7 @@
                   id="carImage"
                   placeholder="https://..."
                   name="imageUrl"
-                  value=""
+                  value={{car.imageUrl}}
                   required=""
                   pattern="https:\/\/.+|http:\/\/.+"
                 />
@@ -204,7 +208,7 @@
                   id="carBrand"
                   placeholder="Audi"
                   name="model"
-                  value=""
+                  value={{car.model}}
                   required=""
                 />
               </div>
@@ -218,8 +222,8 @@
                 </div>
                 </ng-container>
               <div class="offer-label">
-                <label for="seats">Available Seats</label>
-                <label for="price">Price</label>
+                <label for="seats">Available Seats: {{car.seats}}</label>
+                <label for="price">Price: {{car.price}}</label>
               </div>
               <div class="form-group offer-input">
                 <input
@@ -230,7 +234,7 @@
                   id="seats"
                   placeholder="4"
                   name="seats"
-                  value=""
+                  value={{car.seats}}
                   required=""
                 />
                 <ng-container *ngIf="seatsInput.touched">
@@ -251,7 +255,7 @@
                   id="price"
                   placeholder="25"
                   name="price"
-                  value=""
+                  value={{car.price}}
                   required=""
                 />
               </div>
@@ -266,7 +270,7 @@
             </div>
               </ng-container>
               <div class="form-group">
-                <label for="description">Description</label>
+                <label for="description">Description: {{car.description}}</label>
                 <textarea
                 ngModel
                 #descriptionInput="ngModel"
@@ -307,54 +311,6 @@
         </div>
       </section>
     </main>
+</ng-container>
   </body>
 </html>
-<!--<form #form="ngForm" class="login" >
-    <fieldset>
-      <h2>Login Form</h2>
-  
-      <p class="field field-icon">
-        <label for="email"><span><i class="fas fa-envelope"></i></span></label>
-        <input #emailInput="ngModel" class="input-error" ngModel required type="text" name="email" id="email"
-          placeholder="john.doe">
-      </p>
-  
-      <-- <select ngModel="456" name="test" multiple>
-        <option value="123">123</option>
-        <option value="456">456</option>
-      </select>
-  
-      {{form.value | json}} -->
-<!-- <input #files type="file" ngModel required> ->
-  
-      <ng-container *ngIf="emailInput.touched">
-        <p class="error" *ngIf="emailInput.errors?.['required']">
-          Email is required!
-        </p>
-        <p class="error" *ngIf="emailInput.errors?.['appEmailValidator']">
-          Email is not valid!
-        </p>
-      </ng-container>
-  
-      <p class="field field-icon">
-        <label for="password"><span><i class="fas fa-lock"></i></span></label>
-        <input type="password" ngModel #passwordInput="ngModel" name="password" id="password" placeholder="******"
-          required minlength="5">
-      </p>
-      <ng-container *ngIf="passwordInput.touched">
-        <p class="error" *ngIf="passwordInput.errors?.['required']">
-          Password is required!
-        </p>
-        <p class="error" *ngIf="passwordInput.errors?.['minlength']">
-          Password must be at least 5 characters!
-        </p>
-      </ng-container>
-  
-      <button [disabled]="form.invalid">Login</button>
-  
-      <p class="text-center">
-        Have an account?
-        <a href="#">Register</a>
-      </p>
-      </fieldset>
-</form>-->
