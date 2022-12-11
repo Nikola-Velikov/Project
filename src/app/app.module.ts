@@ -10,6 +10,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { FormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { CatalogComponent } from './catalog/catalog.component';
     LogoutComponent,
     CreateComponent,
     CatalogComponent,
+    DetailsComponent,
    
   ],
   imports: [

@@ -10,9 +10,7 @@ body {
     left: 0px;
     color: white;
   }
-  .form-control{
-    width:45%
-  }
+ 
   .error p{
     color: red;
   }
