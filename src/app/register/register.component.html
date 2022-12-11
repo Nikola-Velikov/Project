@@ -71,12 +71,16 @@
                 />
               </div>
               <ng-container *ngIf="emailInput.touched">
-                <p class="error" *ngIf="emailInput.errors?.['required']">
-                  Email is required!
-                </p>
-                <p class="error" *ngIf="emailInput.errors?.['minlength']">
+                <div class="error" *ngIf="emailInput.errors?.['required']">
+                  <p>
+                    Email is required!
+                  </p>
+                </div>
+                <div class="error" *ngIf="emailInput.errors?.['minlength']">
+                   <p>
                     Email is has to be at least 10 characters long!
-                </p>
+                   </p> 
+                </div>
             </ng-container>
               <div class="form-group">
                 <label for="password">Password</label>
