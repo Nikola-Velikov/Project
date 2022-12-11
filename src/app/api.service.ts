@@ -32,5 +32,30 @@ login(email:string,password:string) {
 email,password
   })
 }
+create(color:string,description:string,imageUrl:string,madeIn:string,model:string,
+  price:number,seats:number,town:string,year:number
+  ){
+  return this.httpClient.post('http://localhost:3000/create',{
+color,description,imageUrl,madeIn,model,price,seats,town,year
+  }
+    )
+}
+/*color: "1111"
+​
+description: "1111111111111111111111111"
+​
+imageUrl: "http://jedkew2"
+​
+madeIn: "111111111"
+​
+model: "11111111"
+​
+price: 11
+​
+seats: 11
+​
+town: "11111111"
+​
+year: 11*/ 
 
 }

@@ -3,15 +3,16 @@
 
 body {
   position: relative;
+  background:  rgb(169, 167, 167);
 }
 
 body {
   content: "";
-  background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?cs=srgb&dl=pexels-mike-b-170811.jpg&fm=jpg');
-  background-size: cover;
+  width: 100%;
+  background-size: contain;
   background-position: center;
   position: absolute;
-  top: -25px;
+  top: 50px;
   right: 0px;
   bottom: 0px;
   left: 0px;

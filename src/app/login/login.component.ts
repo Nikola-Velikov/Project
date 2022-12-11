@@ -22,7 +22,14 @@ loginHendler(form:NgForm):void{
   this.authService.login(email, password)
     .subscribe( {
       next:(token)=>console.log(token),
-      error:(err)=>this.error = err.error.text
+      error:(err)=>{
+        if(err.error.text.includes('In')){
+          this.error = err.error.text
+        }else{
+          console.log(err.error.text); //token
+          
+        }
+      }
       
       
     }
