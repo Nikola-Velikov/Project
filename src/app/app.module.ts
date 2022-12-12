@@ -7,12 +7,13 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateComponent } from './create/create.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
-
+import { CommonModule } from '@angular/common';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +26,15 @@ import { EditComponent } from './edit/edit.component';
     CatalogComponent,
     DetailsComponent,
     EditComponent,
-   
+    DeleteComponent,
+    
+    
+    
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule

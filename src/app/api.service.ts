@@ -54,4 +54,31 @@ getOffers(){
 getDetails(id:string){
   return this.httpClient.get<offer>('http://localhost:3000/car/details/'+id)
 }
+edit(id:string, color: string,
+  description: string,
+  imageUrl: string,
+  madeIn: string,
+  model: string,
+  price: number,
+  seats: number,
+  town: string,
+  year: number){
+  return this.httpClient.post('http://localhost:3000/car/edit/'+id,{
+    color,
+    description,
+    imageUrl,
+    madeIn,
+    model,
+    price,
+    seats,
+    town,
+    year,
+  })
+
+}
+del(id:string){
+  
+    return this.httpClient.get('http://localhost:3000/car/delete/'+id)
+  
+}
 }
