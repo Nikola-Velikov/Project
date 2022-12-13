@@ -128,13 +128,16 @@
                       Repeat Password is required!
                     </p>
                   </div>
-                <div class="error" *ngIf="form.value.repass!=form.value.password">
+                </ng-container>
+              <ng-container *ngIf="rePassInput.touched">
+                
+                <div class="error" *ngIf="!rePassInput.errors?.['required']&& form.value.repass!=form.value.password">
                   <p>
                     
+                    Repeat password and password are not the same!
                   </p>
-                    Repeat Password and password are not the same!
                 </div>
-            </ng-container>
+              </ng-container>
             
             <div class="form-group">
                 <p>Already have account? <a href="">Login Now!</a></p>

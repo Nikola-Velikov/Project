@@ -21,13 +21,16 @@ loginHendler(form:NgForm):void{
   
   this.authService.login(email, password)
     .subscribe( {
-      next:(token)=>console.log(token),
+
+      next:(token:any)=> {
+        console.log(3);
+        
+     localStorage.setItem('token',token)
+       sessionStorage.setItem('istrue','true')
+    },
       error:(err)=>{
-        if(err.error.text.includes('In')){
+        if(err.error?.text.includes('In')){
           this.error = err.error.text
-        }else{
-          console.log(err.error.text); //token
-          
         }
       }
       

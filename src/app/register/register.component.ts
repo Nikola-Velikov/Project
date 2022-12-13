@@ -19,7 +19,8 @@ registerhandler(form:NgForm):void{
   const {email,password} = form.value;
   this.authService.register(email, password)
     .subscribe( {
-      next:(user)=>console.log(user)
+      next:(token:any)=>localStorage.setItem('token',token)
+      
       
     });
 }

@@ -81,4 +81,35 @@ del(id:string){
     return this.httpClient.get('http://localhost:3000/car/delete/'+id)
   
 }
+isLogged(id:any){
+  let token!:any
+   this.httpClient.get('http://localhost:3000/token/'+id).subscribe({
+    
+    error:(err)=>{
+   if(localStorage.length==0){
+    sessionStorage.setItem('istrue','false')
+
+   }
+      else if(err.error.text=='Valid'){
+        console.log(7);
+        sessionStorage.setItem('istrue','true')
+    
+        //console.log(token);
+        
+       }else if(err.error.text=='Invalid'){
+        sessionStorage.setItem('istrue','false')
+
+     
+         
+       }
+      
+    }
+   })
+
+   token = sessionStorage.getItem('istrue')
+   console.log(token);
+   
+   
+   return token
+}
 }
