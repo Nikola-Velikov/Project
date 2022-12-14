@@ -68,17 +68,17 @@
                   type="text"
                   class="form-control-2"
                   id="startPoint"
-                 
-                 
                   formControlName="town"
                   minlength="2"
                   required=""
                 />
-               
-                <div *ngIf=" town?.touched && town?.invalid" class="error">
+
+                <div *ngIf="town?.touched && town?.invalid" class="error">
                   <p *ngIf="town?.errors?.['required']">Town is required!</p>
-                  <p *ngIf="town?.errors?.['minlength']">Town has to be at least 2 characters long!</p>
-              </div>
+                  <p *ngIf="town?.errors?.['minlength']">
+                    Town has to be at least 2 characters long!
+                  </p>
+                </div>
                 <input
                   type="text"
                   class="form-control-2"
@@ -91,12 +91,9 @@
               </div>
               <div *ngIf="year?.touched && year?.invalid" class="error">
                 <p *ngIf="year?.errors?.['required']">Year is required!</p>
-               
-            </div>
+              </div>
               <div class="edit-label">
-                <label for="date">
-                 Made In</label
-                >
+                <label for="date"> Made In</label>
                 <label for="time"> Color</label>
               </div>
               <div class="form-group edit-input">
@@ -107,25 +104,24 @@
                   name=""
                   value=""
                   formControlName="madeIn"
-
                 />
                 <div *ngIf="madeIn?.touched && madeIn?.invalid" class="error">
-                  <p *ngIf="madeIn?.errors?.['required']">Made In is required!</p>
-                 
-              </div>
+                  <p *ngIf="madeIn?.errors?.['required']">
+                    Made In is required!
+                  </p>
+                </div>
                 <input
                   type="text"
                   class="form-control-2"
                   id="time"
                   name=""
                   value="Color"
-required=""
-formControlName="color"
+                  required=""
+                  formControlName="color"
                 />
                 <div *ngIf="madeIn?.touched && madeIn?.invalid" class="error">
                   <p *ngIf="madeIn?.errors?.['required']">color is required!</p>
-                 
-              </div>
+                </div>
               </div>
               <div class="edit-label">
                 <label for="carImage">Car Image</label>
@@ -140,21 +136,26 @@ formControlName="color"
                   required=""
                   pattern="https:\/\/.+|http:\/\/.+"
                 />
-                <div *ngIf="imageUrl?.touched && imageUrl?.invalid" class="error">
-                  <p *ngIf="imageUrl?.errors?.['required']">Car image is required!</p>
-                  <p *ngIf="imageUrl?.errors?.['pattern']">Car image is not valid!</p>
-                 
-                 
-              </div>
-                <input type="text" class="form-control-2" id="carBrand" 
-                formControlName="model"
-                
+                <div
+                  *ngIf="imageUrl?.touched && imageUrl?.invalid"
+                  class="error"
+                >
+                  <p *ngIf="imageUrl?.errors?.['required']">
+                    Car image is required!
+                  </p>
+                  <p *ngIf="imageUrl?.errors?.['pattern']">
+                    Car image is not valid!
+                  </p>
+                </div>
+                <input
+                  type="text"
+                  class="form-control-2"
+                  id="carBrand"
+                  formControlName="model"
                 />
                 <div *ngIf="model?.touched && model?.invalid" class="error">
                   <p *ngIf="model?.errors?.['required']">Model is required!</p>
-                 
-                 
-              </div>
+                </div>
               </div>
               <div class="edit-label">
                 <label for="seats">Available Seats</label>
@@ -168,13 +169,11 @@ formControlName="color"
                   name=""
                   value=""
                   formControlName="seats"
-required=""
+                  required=""
                 />
                 <div *ngIf="seats?.touched && seats?.invalid" class="error">
                   <p *ngIf="seats?.errors?.['required']">Seats are required!</p>
-                 
-                 
-              </div>
+                </div>
                 <input
                   type="text"
                   class="form-control-2"
@@ -187,9 +186,7 @@ required=""
                 />
                 <div *ngIf="price?.touched && price?.invalid" class="error">
                   <p *ngIf="price?.errors?.['required']">Price is required!</p>
-                 
-                 
-              </div>
+                </div>
               </div>
               <div class="form-group">
                 <label for="description">Description</label>
@@ -198,24 +195,32 @@ required=""
                   id="description"
                   name=""
                   formControlName="description"
-required=""
-minlength="10"
+                  required=""
+                  minlength="10"
                 ></textarea>
-                <div *ngIf="description?.touched && description?.invalid" class="error">
-                  <p *ngIf="description?.errors?.['required']">Description is required!</p>
-                  <p *ngIf="description?.errors?.['minlength']">Description has to be at least 10 characters long!</p>
-                 
-                 
+                <div
+                  *ngIf="description?.touched && description?.invalid"
+                  class="error"
+                >
+                  <p *ngIf="description?.errors?.['required']">
+                    Description is required!
+                  </p>
+                  <p *ngIf="description?.errors?.['minlength']">
+                    Description has to be at least 10 characters long!
+                  </p>
+                </div>
               </div>
-                
-              </div>
-              <button type="submit"[disabled]="form.invalid" class="btn btn-primary">Submit</button>
+              <button
+                type="submit"
+                [disabled]="form.invalid"
+                class="btn btn-primary"
+              >
+                Submit
+              </button>
             </form>
           </div>
         </div>
       </section>
     </main>
-
-   
   </body>
 </html>

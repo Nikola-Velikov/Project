@@ -6,19 +6,42 @@ import { ApiService } from '../api.service';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  styleUrls: ['./create.component.css'],
 })
 export class CreateComponent {
-  constructor(private authService: ApiService, private router: Router){
-
+  constructor(private authService: ApiService, private router: Router) {}
+  create(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    let {
+      color,
+      description,
+      imageUrl,
+      madeIn,
+      model,
+      price,
+      seats,
+      town,
+      year,
+    } = form.value;
+    let owner: any = localStorage.getItem('token');
+    this.authService
+      .create(
+        color,
+        description,
+        imageUrl,
+        madeIn,
+        model,
+        price,
+        seats,
+        town,
+        year,
+        owner
+      )
+      .subscribe({
+        next: (value) =>  console.log(value),
+        error: (err) =>  console.log(err),
+      });
   }
-create(form:NgForm){
-  if (form.invalid) { return; }
-let {color,description,imageUrl,madeIn,model,price,seats,town,year} = form.value
-this.authService.create(color,description,imageUrl,madeIn,model,price,seats,town,year).subscribe({
-  next:(value)=>console.log(value),
-  error:(err)=>console.log(err)
-  
-})
-}
 }

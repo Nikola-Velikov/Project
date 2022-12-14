@@ -5,11 +5,13 @@ import { CreateComponent } from './create/create.component';
 import { DeleteComponent } from './delete/delete.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
-import { GuardGuard } from './guard.guard';
+import { FavoriteComponent } from './favorite/favorite.component';
+import { GuardGuard } from './shared/guards/guard.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import { NotLoggedGuard } from './not-logged.guard';
+import { NotLoggedGuard } from './shared/guards/not-logged.guard';
+import { OwnerGuard } from './shared/guards/owner.guard';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -46,18 +48,24 @@ const routes: Routes = [
   {
     path:'edit/:id',
     component:EditComponent,
-    canActivate:[GuardGuard]
+    canActivate:[GuardGuard,OwnerGuard]
 
   },
   {
     path:'delete/:id',
     component:DeleteComponent,
-    canActivate:[GuardGuard]
+    canActivate:[GuardGuard,OwnerGuard]
 
   },
   {
     path:'logout',
     component:LogoutComponent,
+    canActivate:[GuardGuard]
+
+  },
+  {
+    path:'favorite/:id',
+    component:FavoriteComponent,
     canActivate:[GuardGuard]
 
   }

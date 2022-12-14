@@ -1,126 +1,80 @@
-<html lang="en">
-  <head>
-    <!-- Do not forget to change the path to the css file -->
-    <link rel="stylesheet" />
-    <title>Login Page</title>
-  </head>
-
-  <body>
-    <!-- In case of error, you should display div with class "error" -->
-    <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-
-    <!-- <div class="error">
-        <p>Error message - 1</p>
-        <p>Error message - 2</p>
-    </div> -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <!-- Do not forget to change the path to the images -->
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <!-- Guest users and Logged users -->
-            <li class="nav-item">
-              <a class="nav-link" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Shared Trips</a>
-            </li>
-            <!-- Logged users -->
-            <li class="nav-item">
-              <a class="nav-link" href="">Offer Trip</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/create">Create Offert</a>
-          </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">Logout as [ test@abv.bg ]</a>
-            </li>
-            <!-- Guest users -->
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Register</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <main>
-      <section class="py-5" id="login-page">
-        <div class="container login-page">
-          <h1>Login</h1>
-          <div class="login">
-            <form #form="ngForm" (ngSubmit)="loginHendler(form)">
-              <div class="form-group">
-                <label for="email">Email address</label>
-                <input ngModel #emailInput="ngModel"
-                minlength="10"
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  placeholder="Enter email"
-                  name="email"
-                  value=""
-                  required=""
-                />
-                
-              </div>
-              <ng-container *ngIf="emailInput.touched">
-                <div class="error" *ngIf="emailInput.errors?.['required']" >
-                 <p> Email is required!</p>
-                </div>
-                <div class="error" *ngIf="emailInput.errors?.['minlength']" >
-                    <p> Email has to be at least 10 characters long!</p>
-                   </div>
-                   <div class="error" *ngIf="error" >
-                    <p> {{error}}</p>
-                   </div>
-              </ng-container>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input
-                ngModel
-                #passwordInput="ngModel"
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  placeholder="Password"
-                  name="password"
-                  value=""
-                  required=""
-                />
-              </div>
-              <ng-container *ngIf="passwordInput.touched">
-                <div class="error" *ngIf="passwordInput.errors?.['required']" >
-                 <p> Password is required!</p>
-                </div>
-                </ng-container>
-         
-              <div class="form-group">
-                <p>Not registered yet? <a href="">Register Now!</a></p>
-              </div>
-              <div *ngIf="form.invalid">
-
-                  <button type="submit"disabled class="btn btn-primary">Submit</button>
-              </div>
-              <div *ngIf="form.valid">
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-   
-            </form>
+<main
+  style="
+    background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.5)),
+      url('https://img.freepik.com/premium-photo/generic-brandless-modern-sport-car_110488-1758.jpg?w=2000') !important;
+    width: 100%;
+    height: 100%;
+    overflow: none;
+  "
+>
+  <section class="py-5" id="login-page">
+    <div class="container login-page">
+      <h1>Login</h1>
+      <div class="login">
+        <form #form="ngForm" (ngSubmit)="loginHendler(form)">
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+              ngModel
+              #emailInput="ngModel"
+              minlength="10"
+              type="text"
+              class="form-control"
+              id="email"
+              placeholder="Enter email"
+              name="email"
+              value=""
+              required=""
+            />
           </div>
-        </div>
-      </section>
-    </main>
-    <!--
+          <ng-container *ngIf="emailInput.touched">
+            <div class="error" *ngIf="emailInput.errors?.['required']">
+              <p>Email is required!</p>
+            </div>
+            <div class="error" *ngIf="emailInput.errors?.['minlength']">
+              <p>Email has to be at least 10 characters long!</p>
+            </div>
+            <div class="error" *ngIf="error">
+              <p>{{ error }}</p>
+            </div>
+          </ng-container>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              ngModel
+              #passwordInput="ngModel"
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              name="password"
+              value=""
+              required=""
+            />
+          </div>
+          <ng-container *ngIf="passwordInput.touched">
+            <div class="error" *ngIf="passwordInput.errors?.['required']">
+              <p>Password is required!</p>
+            </div>
+          </ng-container>
+
+          <div class="form-group">
+            <p>Not registered yet? <a href="">Register Now!</a></p>
+          </div>
+          <div *ngIf="form.invalid">
+            <button type="submit" disabled class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+          <div *ngIf="form.valid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<!--
 
     <form #form="ngForm" class="login" >
         <fieldset>
@@ -138,7 +92,7 @@
           </select>
       
           {{form.value | json}} -->
-    <!-- <input #files type="file" ngModel required> ->
+<!-- <input #files type="file" ngModel required> ->
       
           <ng-container *ngIf="emailInput.touched">
             <p class="error" *ngIf="emailInput.errors?.['required']">
@@ -172,5 +126,3 @@
           </fieldset>
     </form>
 -->
-  </body>
-</html>

@@ -63,8 +63,8 @@
               </div>
               <div class="form-group offer-input">
                 <input
-                ngModel
-                #townInput="ngModel"
+                  ngModel
+                  #townInput="ngModel"
                   type="text"
                   class="form-control-2"
                   id="town"
@@ -75,21 +75,16 @@
                   minlength="2"
                 />
                 <ng-container *ngIf="townInput.touched">
-                    <div class="error" *ngIf="townInput.errors?.['required']">
-                        <p>
-                            Town is required!
-                        </p>
-                    </div>
-                    <div class="error" *ngIf="townInput.errors?.['minlength']">
-                        <p>
-
-                            Town has to be at least 2 characters long!
-                        </p>
-                    </div>
-                  </ng-container>
+                  <div class="error" *ngIf="townInput.errors?.['required']">
+                    <p>Town is required!</p>
+                  </div>
+                  <div class="error" *ngIf="townInput.errors?.['minlength']">
+                    <p>Town has to be at least 2 characters long!</p>
+                  </div>
+                </ng-container>
                 <input
-                ngModel
-                #yearInput="ngModel"
+                  ngModel
+                  #yearInput="ngModel"
                   type="number"
                   class="form-control-2"
                   id="year"
@@ -101,13 +96,8 @@
               </div>
               <ng-container *ngIf="yearInput.touched">
                 <div class="error" *ngIf="yearInput.errors?.['required']">
-                    <p>
-
-                    Year is required!
-
-                    </p>
+                  <p>Year is required!</p>
                 </div>
-               
               </ng-container>
               <div class="offer-label">
                 <label for="time">Made In</label>
@@ -115,8 +105,8 @@
               </div>
               <div class="form-group offer-input">
                 <input
-                ngModel
-                #madeInInput="ngModel"
+                  ngModel
+                  #madeInInput="ngModel"
                   type="text"
                   class="form-control-2"
                   id="made"
@@ -124,10 +114,9 @@
                   name="madeIn"
                   value=""
                   required=""
-                
-                  />
-                  
-                  <input
+                />
+
+                <input
                   ngModel
                   #colorInput="ngModel"
                   type="text"
@@ -137,38 +126,27 @@
                   name="color"
                   value=""
                   required=""
-                  />
+                />
+              </div>
+              <ng-container *ngIf="colorInput.touched">
+                <div class="error" *ngIf="colorInput.errors?.['required']">
+                  <p>Color is required!</p>
                 </div>
-                  <ng-container *ngIf="colorInput.touched">
-                    <div class="error" *ngIf="colorInput.errors?.['required']">
-                        <p>
-                            
-                            Color is required!
-                            
-                        </p>
-                    </div>
-                   
-                </ng-container>
-                
-                
-                <ng-container *ngIf="madeInInput.touched">
-                    <div class="error" *ngIf="madeInInput.errors?.['required']">
-                        <p>
-                            
-                            Made In is required!
-                            
-                        </p>
-                    </div>
-                    
-                </ng-container>
-                  <div class="offer-label">
-                      <label for="carImage">Car Image</label>
+              </ng-container>
+
+              <ng-container *ngIf="madeInInput.touched">
+                <div class="error" *ngIf="madeInInput.errors?.['required']">
+                  <p>Made In is required!</p>
+                </div>
+              </ng-container>
+              <div class="offer-label">
+                <label for="carImage">Car Image</label>
                 <label for="carBrand">Car Brand</label>
               </div>
               <div class="form-group offer-input">
                 <input
-                ngModel
-                #imageInput="ngModel"
+                  ngModel
+                  #imageInput="ngModel"
                   type="text"
                   class="form-control-2"
                   id="carImage"
@@ -179,26 +157,17 @@
                   pattern="https:\/\/.+|http:\/\/.+"
                 />
                 <ng-container *ngIf="imageInput.touched">
-                    <div class="error" *ngIf="imageInput.errors?.['required']">
-                        <p>
-                            
-                            Image is required!
-                            
-                        </p>
-                    </div>
+                  <div class="error" *ngIf="imageInput.errors?.['required']">
+                    <p>Image is required!</p>
+                  </div>
 
-                    <div class="error" *ngIf="imageInput.errors?.['pattern']">
-                        <p>
-                            
-                            Image is not valid!
-                            
-                        </p>
-                    </div>
-                    
+                  <div class="error" *ngIf="imageInput.errors?.['pattern']">
+                    <p>Image is not valid!</p>
+                  </div>
                 </ng-container>
                 <input
-                ngModel
-                #modelInput="ngModel"
+                  ngModel
+                  #modelInput="ngModel"
                   type="text"
                   class="form-control-2"
                   id="carBrand"
@@ -210,21 +179,17 @@
               </div>
               <ng-container *ngIf="modelInput.touched">
                 <div class="error" *ngIf="modelInput.errors?.['required']">
-                    <p>
-                        
-                        Car brand is required!
-                        
-                    </p>
+                  <p>Car brand is required!</p>
                 </div>
-                </ng-container>
+              </ng-container>
               <div class="offer-label">
                 <label for="seats">Available Seats</label>
                 <label for="price">Price</label>
               </div>
               <div class="form-group offer-input">
                 <input
-                ngModel
-                #seatsInput="ngModel"
+                  ngModel
+                  #seatsInput="ngModel"
                   type="number"
                   class="form-control-2"
                   id="seats"
@@ -234,18 +199,13 @@
                   required=""
                 />
                 <ng-container *ngIf="seatsInput.touched">
-
-                    <div class="error" *ngIf="seatsInput.errors?.['required']">
-                        <p>
-                            
-                            Seats are required!
-                            
-                        </p>
-                    </div>
+                  <div class="error" *ngIf="seatsInput.errors?.['required']">
+                    <p>Seats are required!</p>
+                  </div>
                 </ng-container>
                 <input
-                ngModel
-                #priceInput="ngModel"
+                  ngModel
+                  #priceInput="ngModel"
                   type="number"
                   class="form-control-2"
                   id="price"
@@ -256,20 +216,15 @@
                 />
               </div>
               <ng-container *ngIf="priceInput.touched">
-              <div class="error" *ngIf="priceInput.errors?.['required']">
-                <p>
-                    
-                   Price is required!
-                    
-                </p>
-                
-            </div>
+                <div class="error" *ngIf="priceInput.errors?.['required']">
+                  <p>Price is required!</p>
+                </div>
               </ng-container>
               <div class="form-group">
                 <label for="description">Description</label>
                 <textarea
-                ngModel
-                #descriptionInput="ngModel"
+                  ngModel
+                  #descriptionInput="ngModel"
                   class="form-control"
                   id="description"
                   placeholder="Information about the car"
@@ -278,29 +233,27 @@
                   required=""
                 ></textarea>
                 <ng-container *ngIf="descriptionInput.touched">
-                <div class="error" *ngIf="descriptionInput.errors?.['required']">
-                    <p>
-                        
-                       Description is required!
-                        
-                    </p>
-                </div>
-                <div class="error" *ngIf="descriptionInput.errors?.['minlength']">
-                    <p>
-                        
-                       Description has to be at least 10 characters long!
-                        
-                    </p>
-                </div>
-            </ng-container>
+                  <div
+                    class="error"
+                    *ngIf="descriptionInput.errors?.['required']"
+                  >
+                    <p>Description is required!</p>
+                  </div>
+                  <div
+                    class="error"
+                    *ngIf="descriptionInput.errors?.['minlength']"
+                  >
+                    <p>Description has to be at least 10 characters long!</p>
+                  </div>
+                </ng-container>
               </div>
               <div *ngIf="form.invalid">
-
-                  <button type="submit" disabled class="btn btn-primary">Submit</button>
+                <button type="submit" disabled class="btn btn-primary">
+                  Submit
+                </button>
               </div>
               <div *ngIf="form.valid">
-                <button type="submit"  class="btn btn-primary">Submit</button>
-
+                <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>

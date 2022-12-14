@@ -5,14 +5,13 @@ import { ApiService } from '../api.service';
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+  styleUrls: ['./logout.component.css'],
 })
 export class LogoutComponent {
-constructor(router:Router){
-  sessionStorage.clear()
-  localStorage.clear()
+  constructor(router: Router) {
+    sessionStorage.setItem('istrue','false');
+    localStorage.clear();
 
-
-router.navigate(['/catalog'])
-}
+    router.navigate(['/catalog']);
+  }
 }

@@ -14,6 +14,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { CommonModule } from '@angular/common';
 import { DeleteComponent } from './delete/delete.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DeleteComponent } from './delete/delete.component';
     DetailsComponent,
     EditComponent,
     DeleteComponent,
+    FavoriteComponent,
     
     
     

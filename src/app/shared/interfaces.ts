@@ -20,5 +20,6 @@ export interface offer {
   owner: string;
 
   color: string;
+  favorited: any[];
   __v: number;
 }
