@@ -13,6 +13,8 @@ export class DetailsComponent implements OnInit {
   del: string | null = null;
   fav: string | null = null;
   owner: string | null = null;
+  isFav: boolean | null = null;
+
   logged: any = localStorage.getItem('token');
 
   constructor(
@@ -25,12 +27,15 @@ export class DetailsComponent implements OnInit {
       .getDetails(this.activatedRoute.snapshot.params?.['id'])
       .subscribe({
         next: (value) => {
+          
           this.del = '/delete/' + value._id;
           this.fav = '/favorite/' + value._id;
           value._id = '/edit/' + value._id;
           this.owner = value.owner;
           this.car = value;
-          
+          if(value.favorited.includes(localStorage.getItem('token'))){
+            this.isFav=true
+          }
         },
       });
   }

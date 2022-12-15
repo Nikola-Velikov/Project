@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
@@ -8,8 +8,13 @@ import { ApiService } from '../api.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
 })
-export class CreateComponent {
+export class CreateComponent implements OnInit {
   constructor(private authService: ApiService, private router: Router) {}
+  pr:any;
+  ngOnInit(): void {
+    this.pr = 'profile/'+localStorage.getItem('token');
+  }
+  
   create(form: NgForm) {
     if (form.invalid) {
       return;

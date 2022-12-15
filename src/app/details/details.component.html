@@ -65,13 +65,11 @@
             </div>
           </div>
           <p class="line"></p>
-          <div class="buddies-info">
-            <i class="fas fa-users buddies"></i>
-            <h5>Favorited from</h5>
+          <div class="buddies-info" style="font-size: 30px; padding-bottom: 10px;">
+           More Details:
+            
 
-            <h5>
-              Driver: <span>{{ car.owner }}</span>
-            </h5>
+            
           </div>
 
           <h5 class="brand">
@@ -119,9 +117,16 @@
 
                 <!-- logged in user with available seats -->
                 <ng-container *ngIf="owner != logged">
+                <ng-container *ngIf="!isFav">
+
                   <a href="{{ fav }}" style="margin: 14px" class="btn btn-join"
                     >Favorite</a
                   >
+                  </ng-container>
+                  <ng-container *ngIf="isFav">
+
+                  You already favorited this!
+                    </ng-container>
                 </ng-container>
               </div>
             </div>

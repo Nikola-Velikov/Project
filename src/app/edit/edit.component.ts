@@ -90,20 +90,25 @@ export class EditComponent implements OnInit {
       .getDetails(this.activatedRoute.snapshot.params?.['id'])
       .subscribe({
         next: (response: offer) => {
-          const car: any = response;
-          car.city = car.city.toString();
-       
-          this.form.patchValue({
-            imageUrl: car.imageUrl,
-            model: car.model,
-            madeIn: car.madeIn,
-            year: car.year,
-            town: car.city,
-            color: car.color,
-            description: car.description,
-            price: car.price,
-            seats: car.seats,
-          });
+          if(response.owner==localStorage.getItem('token')){
+
+            const car: any = response;
+            car.city = car.city.toString();
+         
+            this.form.patchValue({
+              imageUrl: car.imageUrl,
+              model: car.model,
+              madeIn: car.madeIn,
+              year: car.year,
+              town: car.city,
+              color: car.color,
+              description: car.description,
+              price: car.price,
+              seats: car.seats,
+            });
+          }else{
+          this.router.navigate(['/catalog'])
+          }
         },
       });
   }

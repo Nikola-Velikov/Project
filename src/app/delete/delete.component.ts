@@ -15,14 +15,23 @@ export class DeleteComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.authService
-      .del(this.activatedRoute.snapshot.params?.['id'])
-      .subscribe({
-        next: (value) => {
-         
-        },
-      });
+    this.authService.getDetails(this.activatedRoute.snapshot.params?.['id']).subscribe({
+      next:(value)=>{
+if(value.owner==localStorage.getItem('token')){
 
-    this.router.navigate(['/catalog']);
+  this.authService
+    .del(this.activatedRoute.snapshot.params?.['id'])
+    .subscribe({
+      next: (value) => {
+       
+      },
+    });
+}else{
+  this.router.navigate(['/catalog'])
+}
+      }
+    })
+
+    this.router.navigate(['/home']);
   }
 }

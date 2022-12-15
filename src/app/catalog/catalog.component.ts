@@ -11,6 +11,7 @@ import { offer } from '../shared/interfaces';
 })
 export class CatalogComponent implements OnInit {
   offer: offer[] | null = null;
+
   constructor(private authService: ApiService, private router: Router) {}
   ngOnInit(): void {
     this.authService.getOffers().subscribe({
@@ -18,6 +19,12 @@ export class CatalogComponent implements OnInit {
         this.offer = value;
 
         for (const line of this.offer) {
+        if(  line.favorited.includes(localStorage.getItem('token'))){
+          line.owner = 'true'
+        }else{
+          line.owner = 'false'
+
+        }
           line._id = '/details/' + line._id;
         }
       },

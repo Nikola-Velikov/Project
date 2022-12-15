@@ -11,8 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NotLoggedGuard } from './shared/guards/not-logged.guard';
-import { OwnerGuard } from './shared/guards/owner.guard';
+
 import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -48,13 +49,13 @@ const routes: Routes = [
   {
     path:'edit/:id',
     component:EditComponent,
-    canActivate:[GuardGuard,OwnerGuard]
+    canActivate:[GuardGuard]
 
   },
   {
     path:'delete/:id',
     component:DeleteComponent,
-    canActivate:[GuardGuard,OwnerGuard]
+    canActivate:[GuardGuard]
 
   },
   {
@@ -68,7 +69,13 @@ const routes: Routes = [
     component:FavoriteComponent,
     canActivate:[GuardGuard]
 
-  }
+  },
+  {
+    path:'profile/:id',
+    component:ProfileComponent,
+    canActivate:[GuardGuard]
+
+  },
 ];
 
 @NgModule({
