@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -9,27 +10,40 @@ import { ApiService } from '../api.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  error: string | null = null;
-  constructor(private authService: ApiService, private router: Router) {}
-  loginHendler(form: NgForm): void {
-    if (form.invalid) {
-      return;
-    }
-    const { email, password } = form.value;
-  
+  error: boolean | null = null;
+  message: string | null = null;
 
-    this.authService.login(email, password).subscribe({
-      next: (token: any) => {
-       
+  constructor(private userService: UserService, private router: Router) {}
+  handleLogin(form:NgForm){
+    this.userService.loginUser(form.value)
+    .subscribe({
+        next: (response:any)=>{
+            if(!response.notErr){
 
-        localStorage.setItem('token', token);
-        sessionStorage.setItem('istrue', 'true');
-      },
-      error: (err) => {
-        if (err.error?.text.includes('In')) {
-          this.error = err.error.text;
+                this.error = true;
+                this.message = response.error;
+              console.log(response);
+              
+            }
+            else{
+                console.log(this.userService.user);
+                let token = response.result;
+                localStorage.setItem('token', token);
+                
+             
+
+
+               
+
+
+
+            }
+        },
+        error: (error)=>{
+            console.error(error);
+            
+            
         }
-      },
-    });
-  }
+    })
+}
 }

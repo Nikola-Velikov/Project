@@ -6,11 +6,11 @@ import { DeleteComponent } from './delete/delete.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { FavoriteComponent } from './favorite/favorite.component';
-import { GuardGuard } from './shared/guards/guard.guard';
+import {  AuthGuard} from './shared/guards/guard.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import { NotLoggedGuard } from './shared/guards/not-logged.guard';
+import { NotloggedGuard } from './shared/guards/not-logged.guard';
 
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -23,18 +23,18 @@ const routes: Routes = [
   {
     path:'register',
    component:RegisterComponent,
-   canActivate:[NotLoggedGuard]
+   canActivate:[NotloggedGuard]
   },
   {
     path:'login',
     component:LoginComponent,
-   canActivate:[NotLoggedGuard]
+  canActivate:[NotloggedGuard]
 
   },
   {
     path:'create',
     component:CreateComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
   },
   {
     path:'catalog',
@@ -43,37 +43,37 @@ const routes: Routes = [
   {
     path:'details/:id',
     component:DetailsComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
 
   },
   {
     path:'edit/:id',
     component:EditComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
 
   },
   {
     path:'delete/:id',
     component:DeleteComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
 
   },
   {
     path:'logout',
     component:LogoutComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
 
   },
   {
     path:'favorite/:id',
     component:FavoriteComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
 
   },
   {
     path:'profile/:id',
     component:ProfileComponent,
-    canActivate:[GuardGuard]
+    canActivate:[AuthGuard]
 
   },
 ];

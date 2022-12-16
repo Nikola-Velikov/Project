@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../api.service';
 import { offer } from '../shared/interfaces';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-edit-job-form',
@@ -15,6 +16,8 @@ export class EditComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: ApiService,
+    private userService: UserService,
+
     private router: Router
   ) {}
 
@@ -61,39 +64,17 @@ export class EditComponent implements OnInit {
   get price() {
     return this.form.get('price');
   }
-  /*
-  updateJob(form: FormGroup) {
-    const car: offer = {
-      name: this.form.value.name!,
-      description: this.form.value.description!,
-      salary: this.form.value.salary!,
-    }
-
-   /* 
-
-    this.jobService.updateJob(job, '6393762f045fca10ea31bc7c')
-      .subscribe({
-        next: (response) => {
-         
-        },
-        error: () => {
-
-        }
-      })
-    
-    }
-    
-    */
+ 
 
   loadCar() {
     this.authService
       .getDetails(this.activatedRoute.snapshot.params?.['id'])
       .subscribe({
         next: (response: offer) => {
-          if(response.owner==localStorage.getItem('token')){
+          if(response.owner==this.userService.user._id){
 
             const car: any = response;
-            car.city = car.city.toString();
+            car.city = car.city;
          
             this.form.patchValue({
               imageUrl: car.imageUrl,
@@ -105,6 +86,7 @@ export class EditComponent implements OnInit {
               description: car.description,
               price: car.price,
               seats: car.seats,
+              
             });
           }else{
           this.router.navigate(['/catalog'])
@@ -137,7 +119,8 @@ export class EditComponent implements OnInit {
         price,
         seats,
         town,
-        year
+        year,
+        
       )
       .subscribe({
         next: (value) => {

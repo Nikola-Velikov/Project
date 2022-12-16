@@ -11,29 +11,28 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent {
   offer!: any[];
-  user!: any;
+  user:any = this.userService.user ;
 
 
-  constructor(private userSvice: UserService, private router: Router,private activatedRoute: ActivatedRoute,) {}
+  constructor( private router: Router,private userService:UserService,private activatedRoute: ActivatedRoute,) {}
   ngOnInit(): void {
-   this.userSvice.getUser(this.activatedRoute.snapshot.params?.['id']).subscribe({
+   this.userService.getFavorites().subscribe({
     next:(value:any)=>{
 
-       this.offer = value.fav;
-       this.user = value.user;
-
-console.log(this.user);
-
-
-        /*for (const line of this.offer) {
-        if(  line.favorited.includes(localStorage.getItem('token'))){
+       this.offer = value;
+      
+console.log(this.offer);
+    
+  
+        for (const line of this.offer) {
+        if(  line.favorited.includes(this.userService.user._id)){
           line.owner = 'true'
         }else{
           line.owner = 'false'
 
         }
           line._id = '/details/' + line._id;
-        }*/
+        }
     }
    })
  

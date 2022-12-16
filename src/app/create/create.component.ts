@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-create',
@@ -9,10 +10,10 @@ import { ApiService } from '../api.service';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent implements OnInit {
-  constructor(private authService: ApiService, private router: Router) {}
+  constructor(private authService: ApiService,private userService:UserService, private router: Router) {}
   pr:any;
   ngOnInit(): void {
-    this.pr = 'profile/'+localStorage.getItem('token');
+    this.pr = 'profile/'+this.userService.user._id;
   }
   
   create(form: NgForm) {
@@ -30,7 +31,7 @@ export class CreateComponent implements OnInit {
       town,
       year,
     } = form.value;
-    let owner: any = localStorage.getItem('token');
+    let owner: any = this.userService.user._id;
     this.authService
       .create(
         color,

@@ -2,6 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-register',
@@ -9,17 +10,41 @@ import { ApiService } from '../api.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  constructor(private authService: ApiService, private router: Router) {}
-  registerhandler(form: NgForm): void {
-    if (form.invalid) {
-      return;
-    }
-    const { email, password } = form.value;
-    this.authService.register(email, password).subscribe({
-      next: (token: any) => {
-        localStorage.setItem('token', token);
-        sessionStorage.setItem('istrue', 'true');
-      },
-    });
+  users!: any[];
+
+  
+
+
+  constructor(private userService: UserService, private router: Router) {
+
   }
+
+  
+  
+
+ 
+  
+  handleSubmit(form:NgForm) {
+    let formValue: any = {
+      
+      password: form.value.password!,
+      email: form.value.email!,
+   
+    };
+    console.log(formValue);
+    this.userService.createUser(formValue)
+      .subscribe({
+        next: (response:any) => {
+          if (response.notErr) {
+     this.router.navigate(['/login'])
+          
+          }
+        },
+       
+      })
+
+  }
+
+
+
 }

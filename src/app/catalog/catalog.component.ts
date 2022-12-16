@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { ApiService } from '../api.service';
 import { offer } from '../shared/interfaces';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-catalog',
@@ -12,14 +13,20 @@ import { offer } from '../shared/interfaces';
 export class CatalogComponent implements OnInit {
   offer: offer[] | null = null;
 
-  constructor(private authService: ApiService, private router: Router) {}
+  constructor(private authService: ApiService,private userService: UserService, private router: Router) {}
   ngOnInit(): void {
     this.authService.getOffers().subscribe({
       next: (value) => {
         this.offer = value;
+;
 
         for (const line of this.offer) {
-        if(  line.favorited.includes(localStorage.getItem('token'))){
+        
+         
+          
+        if(line.favorited.includes(this.userService.user._id)){
+          console.log(this.userService.user._id);
+          
           line.owner = 'true'
         }else{
           line.owner = 'false'

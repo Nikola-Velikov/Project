@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-details',
@@ -15,11 +16,13 @@ export class DetailsComponent implements OnInit {
   owner: string | null = null;
   isFav: boolean | null = null;
 
-  logged: any = localStorage.getItem('token');
+  logged: any = this.userService.user._id;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private authService: ApiService
+    private authService: ApiService,
+    private userService: UserService
+
   ) {}
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params?.['id'];
@@ -33,7 +36,11 @@ export class DetailsComponent implements OnInit {
           value._id = '/edit/' + value._id;
           this.owner = value.owner;
           this.car = value;
-          if(value.favorited.includes(localStorage.getItem('token'))){
+          
+          
+          if(value.favorited.includes(this.userService.user._id)){
+        
+            
             this.isFav=true
           }
         },

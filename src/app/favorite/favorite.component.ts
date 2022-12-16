@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-favorite',
@@ -13,6 +14,8 @@ export class FavoriteComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: ApiService,
+    private userService: UserService,
+
     private router: Router
   ) {}
   ngOnInit(): void {
@@ -23,15 +26,15 @@ export class FavoriteComponent implements OnInit {
       .getDetails(this.activatedRoute.snapshot.params?.['id'])
       .subscribe({
         next: (car) => {
-          if(car.owner!=localStorage.getItem('token')){
-            if(car.favorited.includes(localStorage.getItem('token'))){
+          if(car.owner!=this.userService.user._id){
+            if(car.favorited.includes(this.userService.user._id)){
           this.router.navigate(['/catalog']);
               
             }else{
 
             
           this.authService
-            .favorite(car._id, localStorage.getItem('token'))
+            .favorite(car._id, this.userService.user._id)
             .subscribe({
               next: (value) => {
               

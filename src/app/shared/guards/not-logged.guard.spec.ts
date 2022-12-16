@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
+import { NotloggedGuard } from './not-logged.guard';
 
-import { OwnerGuard } from './owner.guard';
 
-describe('OwnerGuard', () => {
-  let guard: OwnerGuard;
+
+describe('NotLoggedGuard', () => {
+  let guard: NotloggedGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(OwnerGuard);
+    guard = TestBed.inject(NotloggedGuard);
   });
 
   it('should be created', () => {

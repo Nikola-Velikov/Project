@@ -1,30 +1,21 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ApiService } from 'src/app/api.service';
+import { UserService } from 'src/app/user.service';
 
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class NotLoggedGuard implements CanActivate {
-  constructor(private router: Router, private service: ApiService) {}
+export class NotloggedGuard implements CanActivate {
+  constructor(
+    private router: Router, 
+    private userService: UserService) { }
 
-  canActivate(route: any, state: RouterStateSnapshot) {
-    let id = localStorage.getItem('token');
- 
-
-    if (this.service.isLogged(id) == 'false') {
-      return true;
-    } else {
-      this.router.navigate(['/home']);
-      return false;
-    }
-  }
+canActivate(route: any, state: RouterStateSnapshot){
+    if(!this.userService.isLoggedIn()) return true;
+    this.router.navigate(['/catalog']);
+    return false;
+}
+  
 }
